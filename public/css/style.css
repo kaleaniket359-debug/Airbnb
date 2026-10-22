@@ -1,0 +1,121 @@
+.navbar{
+    box-shadow: 4px 4px 10px rgb(121, 239, 239);
+    height: 80px;
+}
+.container-fluid{
+    background-color: #f36666;
+    height: 80px;
+    font-size: x-large;
+}
+.collapse{
+    padding: 20px;
+    margin-left: 50px;
+}
+.fa-solid{
+    font-size: xx-large;
+}
+
+
+/* //footer */
+/* Footer */
+footer {
+    background-color: #f7f7f7;
+    border-top: 1px solid #ddd;
+    margin-top: 40px;
+}
+
+.f-info {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    padding: 25px 20px;
+}
+
+/* Social Media Icons */
+.f-info-social {
+    display: flex;
+    gap: 18px;
+    font-size: 20px;
+}
+
+.f-info-social i {
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.f-info-social i:hover {
+    transform: translateY(-3px);
+    color: #fe424d;
+}
+
+/* Copyright */
+.f-info div:nth-child(2) {
+    color: #555;
+    font-size: 14px;
+}
+
+/* Links */
+.f-info-link {
+    display: flex;
+    gap: 20px;
+}
+
+.f-info-link a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.f-info-link a:hover {
+    color: #fe424d;
+    text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .f-info {
+        padding: 20px 10px;
+    }
+
+    .f-info-social {
+        font-size: 18px;
+    }
+
+    .f-info-link {
+        gap: 15px;
+    }
+}
+
+/* //listing style  */
+
+.card {
+    border: none !important;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-radius: 20px;
+    box-shadow: 5px 10px 30px rgba(49, 46, 46, 0.3);
+}
+
+.card-img-top{
+    border-radius: 20px;
+    margin-bottom: 26px !important;
+}
+.card-text{
+    margin-top: -15px;
+    font-size: large;
+}
+/* listing link */
+.listing-links{
+    text-decoration: none;
+}
+

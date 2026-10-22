@@ -1,0 +1,133 @@
+
+<% layout('layouts/boilerplate') -%>
+
+<body>
+
+    <div class="container mt-5 mb-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-8 col-lg-7">
+
+                <div class="card shadow p-4">
+
+                    <h2 class="text-center mb-4">
+                        The edit information page
+                    </h2>
+
+                    <form
+                        method="POST"
+                        action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation"
+                        enctype="multipart/form-data"
+                    >
+
+                        <div class="mb-3">
+                            <h3 class="fs-6">
+                                Enter the New title :
+
+                                <input
+                                    type="text"
+                                    value="<%= listing.title %>"
+                                    name="listing[title]"
+                                    class="form-control mt-2"
+                                    required
+                                />
+                            </h3>
+                        </div>
+
+                        <div class="mb-3">
+                            <img src="<%= listing.image.url %>" alt="Prev. image" style="height: 200px; width: 200px;">
+                        </div>
+
+                        <div class="mb-3">
+                            <h3 class="fs-6">
+                                Upload new image :
+
+                                <input
+                                    type="file"
+                                    name="listing[image]"
+                                    class="form-control mt-2"
+                                    required
+                                />
+                            </h3>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <h3 class="fs-6">
+                                Enter the New description :
+
+                                <textarea
+                                    name="listing[description]"
+                                    class="form-control mt-2"
+                                    rows="4"
+                                    required
+                                ><%= listing.description %></textarea>
+                            </h3>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <h3 class="fs-6">
+                                Enter the New price :
+
+                                <input
+                                    type="number"
+                                    value="<%= listing.price %>"
+                                    name="listing[price]"
+                                    class="form-control mt-2"
+                                    required
+                                />
+                            </h3>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <h3 class="fs-6">
+                                Enter the New country :
+
+                                <input
+                                    type="text"
+                                    value="<%= listing.country %>"
+                                    name="listing[country]"
+                                    class="form-control mt-2"
+                                    required
+                                />
+                            </h3>
+                        </div>
+
+
+                        <div class="mb-4">
+                            <h3 class="fs-6">
+                                Enter the New location :
+
+                                <input
+                                    type="text"
+                                    value="<%= listing.location %>"
+                                    name="listing[location]"
+                                    class="form-control mt-2"
+                                    required
+                                />
+                            </h3>
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-danger w-100"
+                        >
+                            Submit edited info
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+<script src="/JS/script.js"></script>

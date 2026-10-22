@@ -1,0 +1,160 @@
+
+<% layout('layouts/boilerplate') -%>
+
+<div class="container mt-5 mb-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8 col-lg-7">
+
+            <div class="card shadow p-4">
+
+                <h2 class="text-center mb-4">
+                    Create New Listing
+                </h2>
+
+                <form method="post" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+
+                    <!-- Title -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Listing Title
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Enter title"
+                            name="listing[title]"
+                            required
+                        >
+                        <div class="invalid-feedback">
+                                Add title!
+                        </div>
+                    </div>
+
+
+                    <!-- Image -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Image URL
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Enter image URL"
+                            name="listing[image][url]"
+                        >
+                        <div class="invalid-feedback">
+                            Add image URL/Address
+                        </div>
+                    </div>
+                    
+                    <!-- Image upload -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Upload image of place : 
+                        </label>
+
+                        <input
+                            type="file"
+                            class="form-control"
+                            name="listing[image]"
+                        >
+                        <div class="invalid-feedback">
+                            Add image URL/Address
+                        </div>
+                    </div>
+
+
+                    <!-- Description -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Description
+                        </label>
+
+                        <textarea
+                            class="form-control"
+                            placeholder="Enter description"
+                            name="listing[description]"
+                            rows="4"
+                            required
+                        ></textarea>
+                        <div class="invalid-feedback">
+                            Give some discription
+                        </div>
+                    </div>
+
+
+                    <!-- Price -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Price
+                        </label>
+
+                        <input
+                            class="form-control"
+                            placeholder="Enter price"
+                            name="listing[price]"
+                            type="Number"
+                            required
+                        >
+                        <div class="invalid-feedback">
+                            Enter the price
+                        </div>
+                    </div>
+
+
+                    <!-- Country -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Country
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Enter country"
+                            name="listing[country]"
+                            required
+                        >
+                        <div class="invalid-feedback">
+                            Enter the country
+                        </div>
+                    </div>
+
+
+                    <!-- Location -->
+                    <div class="mb-4">
+                        <label class="form-label">
+                            Location
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Enter location"
+                            name="listing[location]"
+                            required
+                        >
+                        <div class="invalid-feedback">
+                            Enter the location
+                        </div>
+                    </div>
+
+
+                    <!-- Submit -->
+                    <button class="btn btn-danger w-100">
+                        Submit New Listing
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

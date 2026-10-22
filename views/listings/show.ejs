@@ -1,0 +1,196 @@
+
+<% layout('layouts/boilerplate') -%>
+
+<body>
+
+    <div class="container mt-5 mb-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-8 col-lg-6">
+
+                <div class="card shadow">
+
+                    <!-- Image -->
+                    <img
+                        src="<%= listing.image.url %>"
+                        class="card-img-top"
+                        alt="listing image"
+                        style="height: 500px;"
+                    >
+
+                    <div class="card-body p-4">
+
+                    <h3 class="card-title text-center mb-4">
+                            Place details
+                    </h3>
+                   
+                        <ul class="list-group list-group-flush">
+
+                             <li class="list-group-item"><strong>Owner:</strong> <%= listing.owner.username %> </li>
+                             
+                            <li class="list-group-item">
+                                <strong>Title:</strong>
+                                <%= listing.title %>
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong>Description:</strong>
+                                <%= listing.description %>
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong>Price:</strong>
+                                &#8377;<%= listing.price.toLocaleString("en-IN") %>
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong>Location:</strong>
+                                <%= listing.location %>
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong>Country:</strong>
+                                <%= listing.country %>
+                            </li>
+
+                        </ul>
+
+                    <% if(currUser && listing.owner._id.equals(currUser._id)){ %>
+
+                        <!-- Buttons -->
+                        <div class="d-flex gap-2 mt-4">
+
+                            <a
+                                href="/listings/<%= listing._id %>/edit"
+                                class="btn btn-warning flex-grow-1"
+                            >
+                                Edit the info
+                            </a>
+
+                            <form
+                                method="post"
+                                action="/listings/<%= listing._id%>?_method=DELETE"
+                                class="flex-grow-1"
+                            >
+                                <button
+                                    class="btn btn-danger w-100"
+                                >
+                                    Delete this listing
+                                </button>
+                            </form>
+
+                        </div>
+
+                    <% } %>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="container mt-5 mb-5">
+        <hr>
+
+<!-- //======================================================================================== -->
+        <h3>Leave a Review</h3>
+
+        <% if(currUser){ %>
+
+        <form
+            action="/listings/<%= listing._id %>/reviews"
+            method="POST"
+            class="mb-4 needs-validation"
+            novalidate
+            >
+
+            <div class="mb-3">
+                <label for="rating" class="form-label">Rating</label>
+
+                <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    value="3"
+                    id="rating"
+                    name="review[rating]"
+                    class="form-range"
+                    required
+                >
+
+                <div class="form-text">
+                    Rating must be between 1 and 5.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="comment" class="form-label">Comment</label>
+
+                <textarea
+                    name="review[comment]"
+                    id="comment"
+                    class="form-control"
+                    rows="4"
+                    minlength="3"
+                    maxlength="500"
+                    placeholder="Write your review..."
+                    required
+                ></textarea>
+
+                <div class="invalid-feedback">
+                    Please enter a comment between 3 and 500 characters.
+                </div>
+            </div>
+
+            <button class="btn btn-dark" type="submit">
+                Submit Review
+            </button>
+
+        </form>
+            <hr>
+        <% } %>
+            
+<div class="mt-5">
+    <h4 class="mb-4">Reviews by Visitors</h4>
+
+    <div class="row">
+
+        <% for(review of listing.reviews){ %>
+
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+
+                        <h6 class="card-subtitle mb-2 text-muted">
+                           Visitor name : <b> <%=  review.author.username %> </b><hr>
+                        </h6>
+
+                        <p class="card-text">
+                            <%= review.comment %> 
+                        </p>
+
+                        <span class="badge bg-dark">
+                            Rating: <%= review.rating %>/5
+                        </span>
+
+                    </div>
+
+                    <form method="post" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                        <button class="btn btn-dark mb-4">Delete</button>
+                    </form>
+                    
+                </div>
+            </div>
+
+        <% } %>
+    </div>
+</div>
+
+    </div>
+
+</body>
