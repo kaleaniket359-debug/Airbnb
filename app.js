@@ -13,7 +13,7 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 
 const session = require("express-session");
-const MongoStore = require("connect-mongo");
+const MongoStore = require("connect-mongo").default;
 const flash = require("connect-flash");
 
 const passport = require("passport");
@@ -25,9 +25,8 @@ const user = require('./models/user.js');
 const userRouter = require('./routes/user.js');
 
 
-
-// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const Database_link = process.env.ATLASDB_URL;
+
 
 main().then(()=>{
     console.log("The DB is connected");
@@ -48,14 +47,14 @@ app.use(express.static(path.join(__dirname,"public")));
 
 const store = MongoStore.create({
     mongoUrl: Database_link,
-    crypto:{
+    crypto: {
         secret: process.env.SECRET,
     },
-    touchAfter: 24*3600,
+    touchAfter: 24 * 3600,
 });
 
 store.on("error",()=>{
-    console.log("Error in mongo session",error);
+    console.log("Error in mongo session",err);
 });
 
 const sessionOptions = {
