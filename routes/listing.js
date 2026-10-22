@@ -10,7 +10,7 @@ const listingController = require("../controllers/listings.js");
 const multer = require("multer");
 const {storage} = require("../cloudConfig.js");
 const upload = multer({storage});
-console.log("Multer configured");
+
 //error by handling middleware
 const validateListing = (req, res, next) => {
     let { error } = listingSchema.validate(req.body);
